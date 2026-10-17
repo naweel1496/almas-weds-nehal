@@ -1,5 +1,3 @@
-HTML
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -47,7 +45,7 @@ HTML
             align-items: center;
             overflow-y: auto;
             color: var(--text-dark);
-            padding: 20px 10px;
+            padding: 40px 15px; /* Increased padding to give breathing room top/bottom */
         }
 
         .container {
@@ -210,14 +208,14 @@ HTML
             transition: opacity 0.3s;
         }
 
-        /* Fully responsive expansion that fits perfectly inside mobile & laptop viewports */
+        /* Adjusted wrapper and card heights/transforms to prevent clipping */
         .envelope-wrapper.open {
-            height: 560px;
+            height: 540px;
         }
 
         .envelope-wrapper.open .card {
-            height: 560px;
-            transform: translateY(-90px);
+            height: 540px;
+            transform: translateY(-40px); /* Reduced upward shift so top doesn't get clipped */
             z-index: 15;
             box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
@@ -584,7 +582,13 @@ HTML
 
     <script>
         function openCard() {
-            document.getElementById('envelopeWrapper').classList.add('open');
+            const wrapper = document.getElementById('envelopeWrapper');
+            wrapper.classList.add('open');
+            
+            // Smoothly scroll container into view on mobile devices when opened
+            setTimeout(() => {
+                wrapper.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }, 300);
         }
 
         function switchTab(tabName) {
