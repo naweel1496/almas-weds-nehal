@@ -4,7 +4,7 @@ HTML
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Wedding Invitation - Almas & Nehal</title>
     
     <!-- Google Fonts -->
@@ -52,16 +52,15 @@ HTML
 
         .container {
             width: 100%;
-            max-width: 480px;
+            max-width: 440px;
             perspective: 1000px;
-            margin: 0 auto;
+            margin: auto;
         }
 
         .envelope-wrapper {
             position: relative;
             width: 100%;
-            min-height: 520px;
-            height: auto;
+            height: 380px;
             transition: transform 0.6s ease;
         }
 
@@ -97,20 +96,20 @@ HTML
             left: 0;
             width: 0;
             height: 0;
-            border-left: 240px solid transparent;
-            border-right: 240px solid transparent;
-            border-top: 200px solid #143e25;
+            border-left: 220px solid transparent;
+            border-right: 220px solid transparent;
+            border-top: 180px solid #143e25;
             transform-origin: top;
             transition: transform var(--transition-speed) ease-in-out, z-index 0.2s ease;
             z-index: 12;
             filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 440px) {
             .envelope-flap {
-                border-left-width: calc(50vw - 10px);
-                border-right-width: calc(50vw - 10px);
-                border-top-width: 180px;
+                border-left-width: calc(50vw - 20px);
+                border-right-width: calc(50vw - 20px);
+                border-top-width: 160px;
             }
         }
 
@@ -120,28 +119,28 @@ HTML
             left: 0;
             width: 0;
             height: 0;
-            border-left: 240px solid #18472b;
-            border-right: 240px solid #18472b;
+            border-left: 220px solid #18472b;
+            border-right: 220px solid #18472b;
             border-bottom: 200px solid #1a4d2e;
             border-radius: 0 0 12px 12px;
             z-index: 11;
         }
 
-        @media (max-width: 480px) {
+        @media (max-width: 440px) {
             .envelope-pocket {
-                border-left-width: calc(50vw - 10px);
-                border-right-width: calc(50vw - 10px);
+                border-left-width: calc(50vw - 20px);
+                border-right-width: calc(50vw - 20px);
                 border-bottom-width: 180px;
             }
         }
 
         .wax-seal {
             position: absolute;
-            top: 140px;
+            top: 130px;
             left: 50%;
             transform: translateX(-50%);
-            width: 75px;
-            height: 75px;
+            width: 70px;
+            height: 70px;
             background: radial-gradient(circle, #f3e5ab 0%, #d4af37 60%, #aa7c11 100%);
             border-radius: 50%;
             z-index: 13;
@@ -156,23 +155,21 @@ HTML
 
         .wax-seal:hover {
             transform: translateX(-50%) scale(1.08);
-            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
 
         .wax-seal i {
             color: #0d2818;
-            font-size: 32px;
-            filter: drop-shadow(0 1px 1px rgba(255,255,255,0.4));
+            font-size: 28px;
         }
 
         .tap-hint {
             position: absolute;
-            top: 230px;
+            top: 215px;
             width: 100%;
             text-align: center;
             color: var(--gold-light);
             font-family: 'Cinzel', serif;
-            font-size: 13px;
+            font-size: 12px;
             letter-spacing: 2px;
             z-index: 13;
             text-transform: uppercase;
@@ -186,14 +183,14 @@ HTML
 
         .card {
             position: absolute;
-            bottom: 10px;
-            left: 5%;
-            width: 90%;
-            height: 480px;
+            bottom: 0;
+            left: 4%;
+            width: 92%;
+            height: 380px;
             background-color: var(--cream-bg);
             border-radius: 8px;
             z-index: 9;
-            transition: transform var(--transition-speed) ease-in-out, z-index 0.1s ease;
+            transition: all var(--transition-speed) ease-in-out;
             box-shadow: 0 5px 15px rgba(0,0,0,0.2);
             overflow: hidden;
             display: flex;
@@ -213,14 +210,20 @@ HTML
             transition: opacity 0.3s;
         }
 
+        /* Fully responsive expansion that fits perfectly inside mobile & laptop viewports */
+        .envelope-wrapper.open {
+            height: 560px;
+        }
+
         .envelope-wrapper.open .card {
-            transform: translateY(-120px);
+            height: 560px;
+            transform: translateY(-90px);
             z-index: 15;
-            height: 580px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
         }
 
         .card-inner {
-            padding: 25px 20px;
+            padding: 20px 15px;
             height: 100%;
             overflow-y: auto;
             display: flex;
@@ -244,111 +247,108 @@ HTML
 
         .bismillah-arabic {
             font-family: 'Amiri', serif;
-            font-size: 26px;
+            font-size: 24px;
             color: var(--primary-emerald);
-            margin-bottom: 6px;
-            line-height: 1.4;
+            margin-bottom: 4px;
             font-weight: 700;
         }
 
         .bismillah-english {
-            font-size: 11px;
+            font-size: 10px;
             font-style: italic;
             color: var(--text-muted);
-            margin-bottom: 16px;
-            line-height: 1.4;
+            margin-bottom: 12px;
         }
 
         .invitation-title {
             font-family: 'Cinzel Decorative', serif;
-            font-size: 11px;
-            letter-spacing: 3px;
+            font-size: 10px;
+            letter-spacing: 2px;
             color: var(--gold-dark);
             text-transform: uppercase;
-            margin-bottom: 10px;
+            margin-bottom: 6px;
         }
 
         .couple-names {
             font-family: 'Great Vibes', cursive;
-            font-size: 42px;
+            font-size: 38px;
             color: var(--primary-emerald);
-            margin: 5px 0 10px 0;
-            line-height: 1.2;
-            text-shadow: 1px 1px 0px rgba(212, 175, 55, 0.3);
+            margin: 2px 0 6px 0;
+            line-height: 1.1;
         }
 
         .couple-names span {
             display: block;
             font-family: 'Cinzel', serif;
-            font-size: 14px;
+            font-size: 12px;
             color: var(--gold-dark);
-            margin: 4px 0;
+            margin: 2px 0;
         }
 
         .parents-info {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-dark);
             font-weight: 500;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
 
         .invitation-text {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-dark);
-            line-height: 1.6;
-            margin-bottom: 18px;
+            line-height: 1.5;
+            margin-bottom: 12px;
         }
 
         .main-wedding-date {
             font-family: 'Cinzel', serif;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
             color: var(--primary-emerald);
             text-transform: uppercase;
             letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             border-top: 1px solid rgba(212, 175, 55, 0.3);
             border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-            padding: 8px 0;
+            padding: 6px 0;
             width: 100%;
         }
 
         .countdown-container {
-            margin-bottom: 18px;
+            margin-bottom: 12px;
             width: 100%;
         }
 
         .countdown-title {
             font-family: 'Cinzel', serif;
-            font-size: 10px;
+            font-size: 9px;
             color: var(--gold-dark);
             letter-spacing: 1px;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-transform: uppercase;
         }
 
         .timer {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
         }
 
         .time-box {
             background: var(--primary-emerald);
             color: var(--gold-light);
-            padding: 6px;
+            padding: 4px 6px;
             border-radius: 4px;
-            min-width: 45px;
+            min-width: 40px;
         }
 
         .time-box .num {
             font-family: 'Cinzel', serif;
-            font-size: 16px;
+            font-size: 14px;
             font-weight: 700;
         }
 
         .time-box .label {
-            font-size: 8px;
+            font-size: 7px;
             text-transform: uppercase;
             opacity: 0.8;
         }
@@ -357,16 +357,16 @@ HTML
             display: flex;
             width: 100%;
             border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
 
         .tab-btn {
             flex: 1;
-            padding: 10px 5px;
+            padding: 8px 4px;
             background: none;
             border: none;
             font-family: 'Cinzel', serif;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 600;
             color: var(--text-muted);
             cursor: pointer;
@@ -391,7 +391,7 @@ HTML
         .tab-content {
             display: none;
             width: 100%;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.4s ease;
         }
 
         .tab-content.active {
@@ -399,7 +399,7 @@ HTML
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
+            from { opacity: 0; transform: translateY(4px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
@@ -407,27 +407,27 @@ HTML
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 6px;
-            padding: 15px;
-            margin-bottom: 15px;
+            padding: 12px;
+            margin-bottom: 10px;
             text-align: center;
         }
 
         .event-title {
             font-family: 'Cinzel', serif;
-            font-size: 15px;
+            font-size: 14px;
             color: var(--primary-emerald);
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
 
         .event-detail {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-dark);
-            margin: 6px 0;
+            margin: 4px 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
+            gap: 6px;
         }
 
         .event-detail i {
@@ -436,48 +436,42 @@ HTML
 
         .btn-map {
             display: inline-block;
-            margin-top: 10px;
-            padding: 6px 14px;
+            margin-top: 8px;
+            padding: 5px 12px;
             background: var(--primary-emerald);
             color: var(--gold-light);
             text-decoration: none;
-            font-size: 11px;
+            font-size: 10px;
             border-radius: 20px;
-            font-family: 'Montserrat', sans-serif;
             font-weight: 500;
-            transition: background 0.3s;
-        }
-
-        .btn-map:hover {
-            background: var(--emerald-light);
         }
 
         .compliments-section {
-            margin-top: 10px;
-            padding-top: 12px;
+            margin-top: auto;
+            padding-top: 8px;
             border-top: 1px dashed rgba(212, 175, 55, 0.4);
             width: 100%;
         }
 
         .compliments-title {
             font-family: 'Cinzel', serif;
-            font-size: 10px;
+            font-size: 9px;
             color: var(--gold-dark);
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 4px;
+            margin-bottom: 2px;
         }
 
         .compliments-name {
-            font-size: 13px;
+            font-size: 12px;
             font-weight: 600;
             color: var(--primary-emerald);
         }
 
         .compliments-phone {
-            font-size: 12px;
+            font-size: 11px;
             color: var(--text-dark);
-            margin-top: 2px;
+            margin-top: 1px;
         }
 
         .compliments-phone a {
@@ -519,7 +513,7 @@ HTML
                     </div>
 
                     <p class="invitation-text">
-                        Solicit your gracious presence and blessings on the auspicious occasion of the Nikkah ceremony of our beloved daughter.
+                        Solicit your gracious presence and blessings on the auspicious occasion of the marriage ceremony of our beloved daughter.
                     </p>
 
                     <!-- Main Wedding Date in Bold -->
@@ -547,10 +541,10 @@ HTML
                     <div id="tab-lunch" class="tab-content active">
                         <div class="event-card">
                             <div class="event-title">Lunch</div>
-                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th December 2026</div>
+                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th Dec 2026</div>
                             <div class="event-detail"><i class="far fa-clock"></i> 12:30 PM Onwards</div>
-                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Paschimpali (Ghoramara), Kishanganj</div>
-                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Open Google Maps</a>
+                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Kishanganj, Bihar</div>
+                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Google Maps</a>
                         </div>
                     </div>
 
@@ -558,10 +552,10 @@ HTML
                     <div id="tab-barat" class="tab-content">
                         <div class="event-card">
                             <div class="event-title">Arrival of Barat</div>
-                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th December 2026</div>
+                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th Dec 2026</div>
                             <div class="event-detail"><i class="far fa-clock"></i> 02:30 PM</div>
-                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Paschimpali (Ghoramara), Kishanganj</div>
-                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Open Google Maps</a>
+                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Kishanganj, Bihar</div>
+                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Google Maps</a>
                         </div>
                     </div>
 
@@ -569,17 +563,17 @@ HTML
                     <div id="tab-nikkah" class="tab-content">
                         <div class="event-card">
                             <div class="event-title">Nikkah Ceremony</div>
-                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th December 2026</div>
+                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th Dec 2026</div>
                             <div class="event-detail"><i class="far fa-clock"></i> 03:30 PM</div>
-                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Paschimpali (Ghoramara), Kishanganj</div>
-                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Open Google Maps</a>
+                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Kishanganj, Bihar</div>
+                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Google Maps</a>
                         </div>
                     </div>
 
                     <div class="compliments-section">
                         <div class="compliments-title">With Best Compliments From</div>
                         <div class="compliments-name">Mr. & Mrs. Imran Alam</div>
-                        <div class="compliments-phone"><i class="fas fa-phone-alt" style="font-size: 10px; color: var(--gold-dark);"></i> <a href="tel:9958222986">9958222986</a></div>
+                        <div class="compliments-phone"><i class="fas fa-phone-alt" style="font-size: 9px; color: var(--gold-dark);"></i> <a href="tel:9958222986">9958222986</a></div>
                     </div>
 
                 </div>
