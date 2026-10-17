@@ -1,0 +1,620 @@
+HTML
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation - Almas & Nehal</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@700&family=Cinzel:wght@400;600;700&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-color: #0d2818;
+            --primary-emerald: #164229;
+            --emerald-light: #2d5a3f;
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --cream-bg: #fcfbf7;
+            --text-dark: #1b261b;
+            --text-muted: #5a6e5a;
+            --card-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            --transition-speed: 0.8s;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(circle at 50% 50%, #173e27 0%, #081a0f 100%);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-y: auto;
+            color: var(--text-dark);
+            padding: 20px 10px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 480px;
+            perspective: 1000px;
+            margin: 0 auto;
+        }
+
+        .envelope-wrapper {
+            position: relative;
+            width: 100%;
+            min-height: 520px;
+            height: auto;
+            transition: transform 0.6s ease;
+        }
+
+        .envelope {
+            position: absolute;
+            width: 100%;
+            height: 380px;
+            bottom: 0;
+            background: linear-gradient(135deg, #10331e 0%, #092012 100%);
+            border-radius: 0 0 12px 12px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .envelope::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(var(--gold-primary) 0.75px, transparent 0.75px);
+            background-size: 16px 16px;
+            opacity: 0.15;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .envelope-flap {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 240px solid transparent;
+            border-right: 240px solid transparent;
+            border-top: 200px solid #143e25;
+            transform-origin: top;
+            transition: transform var(--transition-speed) ease-in-out, z-index 0.2s ease;
+            z-index: 12;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.4));
+        }
+
+        @media (max-width: 480px) {
+            .envelope-flap {
+                border-left-width: calc(50vw - 10px);
+                border-right-width: calc(50vw - 10px);
+                border-top-width: 180px;
+            }
+        }
+
+        .envelope-pocket {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 0;
+            border-left: 240px solid #18472b;
+            border-right: 240px solid #18472b;
+            border-bottom: 200px solid #1a4d2e;
+            border-radius: 0 0 12px 12px;
+            z-index: 11;
+        }
+
+        @media (max-width: 480px) {
+            .envelope-pocket {
+                border-left-width: calc(50vw - 10px);
+                border-right-width: calc(50vw - 10px);
+                border-bottom-width: 180px;
+            }
+        }
+
+        .wax-seal {
+            position: absolute;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 75px;
+            height: 75px;
+            background: radial-gradient(circle, #f3e5ab 0%, #d4af37 60%, #aa7c11 100%);
+            border-radius: 50%;
+            z-index: 13;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.5), inset 0 2px 5px rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: all 0.4s ease;
+            border: 2px solid #8a640d;
+        }
+
+        .wax-seal:hover {
+            transform: translateX(-50%) scale(1.08);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .wax-seal i {
+            color: #0d2818;
+            font-size: 32px;
+            filter: drop-shadow(0 1px 1px rgba(255,255,255,0.4));
+        }
+
+        .tap-hint {
+            position: absolute;
+            top: 230px;
+            width: 100%;
+            text-align: center;
+            color: var(--gold-light);
+            font-family: 'Cinzel', serif;
+            font-size: 13px;
+            letter-spacing: 2px;
+            z-index: 13;
+            text-transform: uppercase;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.03); }
+        }
+
+        .card {
+            position: absolute;
+            bottom: 10px;
+            left: 5%;
+            width: 90%;
+            height: 480px;
+            background-color: var(--cream-bg);
+            border-radius: 8px;
+            z-index: 9;
+            transition: transform var(--transition-speed) ease-in-out, z-index 0.1s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 2px solid var(--gold-primary);
+        }
+
+        .envelope-wrapper.open .envelope-flap {
+            transform: rotateX(180deg);
+            z-index: 8;
+        }
+
+        .envelope-wrapper.open .wax-seal,
+        .envelope-wrapper.open .tap-hint {
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .envelope-wrapper.open .card {
+            transform: translateY(-120px);
+            z-index: 15;
+            height: 580px;
+        }
+
+        .card-inner {
+            padding: 25px 20px;
+            height: 100%;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background-image: 
+                radial-gradient(circle at top left, rgba(212, 175, 55, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at bottom right, rgba(22, 66, 41, 0.05) 0%, transparent 40%);
+            scrollbar-width: thin;
+            scrollbar-color: var(--gold-primary) transparent;
+        }
+
+        .card-inner::-webkit-scrollbar {
+            width: 4px;
+        }
+        .card-inner::-webkit-scrollbar-thumb {
+            background: var(--gold-primary);
+            border-radius: 4px;
+        }
+
+        .bismillah-arabic {
+            font-family: 'Amiri', serif;
+            font-size: 26px;
+            color: var(--primary-emerald);
+            margin-bottom: 6px;
+            line-height: 1.4;
+            font-weight: 700;
+        }
+
+        .bismillah-english {
+            font-size: 11px;
+            font-style: italic;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+
+        .invitation-title {
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: var(--gold-dark);
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .couple-names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 42px;
+            color: var(--primary-emerald);
+            margin: 5px 0 10px 0;
+            line-height: 1.2;
+            text-shadow: 1px 1px 0px rgba(212, 175, 55, 0.3);
+        }
+
+        .couple-names span {
+            display: block;
+            font-family: 'Cinzel', serif;
+            font-size: 14px;
+            color: var(--gold-dark);
+            margin: 4px 0;
+        }
+
+        .parents-info {
+            font-size: 12px;
+            color: var(--text-dark);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .invitation-text {
+            font-size: 12px;
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin-bottom: 18px;
+        }
+
+        .main-wedding-date {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--primary-emerald);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            border-top: 1px solid rgba(212, 175, 55, 0.3);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 8px 0;
+            width: 100%;
+        }
+
+        .countdown-container {
+            margin-bottom: 18px;
+            width: 100%;
+        }
+
+        .countdown-title {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            color: var(--gold-dark);
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .timer {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .time-box {
+            background: var(--primary-emerald);
+            color: var(--gold-light);
+            padding: 6px;
+            border-radius: 4px;
+            min-width: 45px;
+        }
+
+        .time-box .num {
+            font-family: 'Cinzel', serif;
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .time-box .label {
+            font-size: 8px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .nav-tabs {
+            display: flex;
+            width: 100%;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 10px 5px;
+            background: none;
+            border: none;
+            font-family: 'Cinzel', serif;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .tab-btn.active {
+            color: var(--primary-emerald);
+        }
+
+        .tab-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gold-primary);
+        }
+
+        .tab-content {
+            display: none;
+            width: 100%;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .event-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 6px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .event-title {
+            font-family: 'Cinzel', serif;
+            font-size: 15px;
+            color: var(--primary-emerald);
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .event-detail {
+            font-size: 12px;
+            color: var(--text-dark);
+            margin: 6px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .event-detail i {
+            color: var(--gold-dark);
+        }
+
+        .btn-map {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 6px 14px;
+            background: var(--primary-emerald);
+            color: var(--gold-light);
+            text-decoration: none;
+            font-size: 11px;
+            border-radius: 20px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+
+        .btn-map:hover {
+            background: var(--emerald-light);
+        }
+
+        .compliments-section {
+            margin-top: 10px;
+            padding-top: 12px;
+            border-top: 1px dashed rgba(212, 175, 55, 0.4);
+            width: 100%;
+        }
+
+        .compliments-title {
+            font-family: 'Cinzel', serif;
+            font-size: 10px;
+            color: var(--gold-dark);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .compliments-name {
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--primary-emerald);
+        }
+
+        .compliments-phone {
+            font-size: 12px;
+            color: var(--text-dark);
+            margin-top: 2px;
+        }
+
+        .compliments-phone a {
+            color: var(--text-dark);
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="envelope-wrapper" id="envelopeWrapper">
+            
+            <div class="envelope" onclick="openCard()">
+                <div class="envelope-flap"></div>
+                <div class="wax-seal">
+                    <i class="fas fa-moon"></i>
+                </div>
+                <div class="tap-hint">Tap Seal to Open</div>
+                <div class="envelope-pocket"></div>
+            </div>
+
+            <div class="card" id="weddingCard">
+                <div class="card-inner">
+                    
+                    <div class="bismillah-arabic">بِسْمِ اللهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+                    <div class="bismillah-english">In the name of Allah, the Most Gracious, the Most Merciful.</div>
+
+                    <div class="invitation-title">Wedding Invitation</div>
+
+                    <div class="couple-names">
+                        Almas
+                        <span>WEDS</span>
+                        Nehal
+                    </div>
+
+                    <div class="parents-info">
+                        Daughter of Mr. & Mrs. Imran Alam
+                    </div>
+
+                    <p class="invitation-text">
+                        Solicit your gracious presence and blessings on the auspicious occasion of the Nikkah ceremony of our beloved daughter.
+                    </p>
+
+                    <!-- Main Wedding Date in Bold -->
+                    <div class="main-wedding-date">
+                        Saturday, 26th December 2026
+                    </div>
+
+                    <div class="countdown-container">
+                        <div class="countdown-title">Counting Down To The Union</div>
+                        <div class="timer">
+                            <div class="time-box"><div class="num" id="days">00</div><div class="label">Days</div></div>
+                            <div class="time-box"><div class="num" id="hours">00</div><div class="label">Hours</div></div>
+                            <div class="time-box"><div class="num" id="mins">00</div><div class="label">Mins</div></div>
+                            <div class="time-box"><div class="num" id="secs">00</div><div class="label">Secs</div></div>
+                        </div>
+                    </div>
+
+                    <div class="nav-tabs">
+                        <button class="tab-btn active" onclick="switchTab('lunch')">Lunch</button>
+                        <button class="tab-btn" onclick="switchTab('barat')">Arrival of Barat</button>
+                        <button class="tab-btn" onclick="switchTab('nikkah')">Nikkah</button>
+                    </div>
+
+                    <!-- TAB 1: LUNCH -->
+                    <div id="tab-lunch" class="tab-content active">
+                        <div class="event-card">
+                            <div class="event-title">Lunch</div>
+                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th December 2026</div>
+                            <div class="event-detail"><i class="far fa-clock"></i> 12:30 PM Onwards</div>
+                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Paschimpali (Ghoramara), Kishanganj</div>
+                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Open Google Maps</a>
+                        </div>
+                    </div>
+
+                    <!-- TAB 2: ARRIVAL OF BARAT -->
+                    <div id="tab-barat" class="tab-content">
+                        <div class="event-card">
+                            <div class="event-title">Arrival of Barat</div>
+                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th December 2026</div>
+                            <div class="event-detail"><i class="far fa-clock"></i> 02:30 PM</div>
+                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Paschimpali (Ghoramara), Kishanganj</div>
+                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Open Google Maps</a>
+                        </div>
+                    </div>
+
+                    <!-- TAB 3: NIKKAH -->
+                    <div id="tab-nikkah" class="tab-content">
+                        <div class="event-card">
+                            <div class="event-title">Nikkah Ceremony</div>
+                            <div class="event-detail"><i class="far fa-calendar-alt"></i> Saturday, 26th December 2026</div>
+                            <div class="event-detail"><i class="far fa-clock"></i> 03:30 PM</div>
+                            <div class="event-detail"><i class="fas fa-map-marker-alt"></i> City Palace, Paschimpali (Ghoramara), Kishanganj</div>
+                            <a href="https://tinyurl.com/5n6fhk6f" target="_blank" class="btn-map"><i class="fas fa-directions"></i> Open Google Maps</a>
+                        </div>
+                    </div>
+
+                    <div class="compliments-section">
+                        <div class="compliments-title">With Best Compliments From</div>
+                        <div class="compliments-name">Mr. & Mrs. Imran Alam</div>
+                        <div class="compliments-phone"><i class="fas fa-phone-alt" style="font-size: 10px; color: var(--gold-dark);"></i> <a href="tel:9958222986">9958222986</a></div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function openCard() {
+            document.getElementById('envelopeWrapper').classList.add('open');
+        }
+
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById('tab-' + tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        // Countdown Timer set to 26th December 2026
+        const weddingDate = new Date('December 26, 2026 12:30:00').getTime();
+
+        setInterval(function() {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance > 0) {
+                document.getElementById('days').innerText = Math.floor(distance / (1000 * 60 * 60 * 24));
+                document.getElementById('hours').innerText = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                document.getElementById('mins').innerText = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                document.getElementById('secs').innerText = Math.floor((distance % (1000 * 60)) / 1000);
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
